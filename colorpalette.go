@@ -77,3 +77,8 @@ func Get(name string) *c.Color {
 func List() []string {
 	return orderedColors
 }
+
+func Exists(name string) bool {
+	_, isExists := PALETTE[name]
+	return isExists
+}

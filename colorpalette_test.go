@@ -11,6 +11,9 @@ func init() {
 }
 
 func TestGet(t *testing.T) {
+	if !Exists("red") {
+		t.Error("red doesn't exist")
+	}
 	col := Get("red")
 	if col == nil {
 		t.Error("no red")
