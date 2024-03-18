@@ -23,6 +23,8 @@ func main() {
 }
 ```
 
+[See source code](https://github.com/bayashi/colorpalette/blob/main/colorpalette.go) to get list of a color name.
+
 ### See Also
 
 https://github.com/fatih/color
