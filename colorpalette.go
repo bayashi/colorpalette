@@ -6,6 +6,8 @@ import (
 	c "github.com/fatih/color"
 )
 
+const STR_ERROR = "error"
+
 var PALETTE = map[string]func() *c.Color{
 	// Bright colors
 	"red":        func() *c.Color { return c.New(c.FgHiRed) },
@@ -36,7 +38,7 @@ var PALETTE = map[string]func() *c.Color{
 	"bg_cyan":    func() *c.Color { return c.New(c.BgCyan) },
 
 	// error color
-	"error": func() *c.Color { return c.New(c.FgHiBlue, c.BgRed, c.Underline) },
+	STR_ERROR: func() *c.Color { return c.New(c.FgHiBlue, c.BgRed, c.Underline) },
 }
 
 var PALETTE_CODE = map[string]string{
@@ -69,7 +71,7 @@ var PALETTE_CODE = map[string]string{
 	"bg_cyan":    fmt.Sprint(c.BgCyan),
 
 	// error color
-	"error": fmt.Sprint(c.BgHiRed),
+	STR_ERROR: fmt.Sprint(c.BgHiRed),
 }
 
 var orderedColors = []string{
@@ -98,7 +100,7 @@ var orderedColors = []string{
 	"bg_magenta",
 	"bg_cyan",
 
-	"error",
+	STR_ERROR,
 }
 
 func Get(name string) *c.Color {
@@ -106,7 +108,7 @@ func Get(name string) *c.Color {
 		return color()
 	}
 
-	return PALETTE["error"]()
+	return PALETTE[STR_ERROR]()
 }
 
 func List() []string {
@@ -123,5 +125,5 @@ func GetCode(name string) string {
 		return color
 	}
 
-	return PALETTE_CODE["error"]
+	return PALETTE_CODE[STR_ERROR]
 }
