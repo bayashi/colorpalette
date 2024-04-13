@@ -1,6 +1,8 @@
 package colorpalette
 
 import (
+	"fmt"
+
 	c "github.com/fatih/color"
 )
 
@@ -35,6 +37,39 @@ var PALETTE = map[string]func() *c.Color{
 
 	// error color
 	"error": func() *c.Color { return c.New(c.FgHiBlue, c.BgRed, c.Underline) },
+}
+
+var PALETTE_CODE = map[string]string{
+	// Bright colors
+	"red":        fmt.Sprint(c.FgHiRed),
+	"green":      fmt.Sprint(c.FgHiGreen),
+	"yellow":     fmt.Sprint(c.FgHiYellow),
+	"blue":       fmt.Sprint(c.FgHiBlue),
+	"magenta":    fmt.Sprint(c.FgHiMagenta),
+	"cyan":       fmt.Sprint(c.FgHiCyan),
+	"gray":       fmt.Sprint(c.FgHiBlack),
+	"light_gray": fmt.Sprint(c.FgWhite),
+	"white":      fmt.Sprint(c.FgHiWhite),
+
+	// Dark colors
+	"black":        fmt.Sprint(c.FgBlack),
+	"dark_red":     fmt.Sprint(c.FgRed),
+	"dark_green":   fmt.Sprint(c.FgGreen),
+	"dark_yellow":  fmt.Sprint(c.FgYellow),
+	"dark_blue":    fmt.Sprint(c.FgBlue),
+	"dark_magenta": fmt.Sprint(c.FgMagenta),
+	"dark_cyan":    fmt.Sprint(c.FgCyan),
+
+	// White text on background color
+	"bg_red":     fmt.Sprint(c.BgRed),
+	"bg_green":   fmt.Sprint(c.BgGreen),
+	"bg_yellow":  fmt.Sprint(c.BgYellow),
+	"bg_blue":    fmt.Sprint(c.BgBlue),
+	"bg_magenta": fmt.Sprint(c.BgMagenta),
+	"bg_cyan":    fmt.Sprint(c.BgCyan),
+
+	// error color
+	"error": fmt.Sprint(c.BgHiRed),
 }
 
 var orderedColors = []string{
@@ -81,4 +116,12 @@ func List() []string {
 func Exists(name string) bool {
 	_, isExists := PALETTE[name]
 	return isExists
+}
+
+func GetCode(name string) string {
+	if color, ok := PALETTE_CODE[name]; ok {
+		return color
+	}
+
+	return PALETTE_CODE["error"]
 }
