@@ -22,6 +22,10 @@ func TestGet(t *testing.T) {
 		t.Error(col.Sprint("wrong red color"))
 	}
 
+	if GetCode("red") != "91" {
+		t.Error("wrong code of red")
+	}
+
 	if len(PALETTE) != len(List()) {
 		t.Error("wrong length")
 	}
